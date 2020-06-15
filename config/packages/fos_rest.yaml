@@ -1,0 +1,19 @@
+# Read the documentation: https://symfony.com/doc/master/bundles/FOSRestBundle/index.html
+fos_rest:
+  versioning:
+    enabled: true
+    resolvers:
+      custom_header: true
+  body_listener: true
+  view:
+    view_response_listener:  true
+  exception:
+    map_exception_codes: true
+    codes:
+      'Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException': 404
+
+    serializer_error_renderer: true
+
+  format_listener:
+    rules:
+      - { path: ^/, prefer_extension: true, fallback_format: json, priorities: [ json ] }
